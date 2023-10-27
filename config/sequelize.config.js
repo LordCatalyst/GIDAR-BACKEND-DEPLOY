@@ -11,7 +11,11 @@ const sequelize = new Sequelize(
     process.env.DEV_DATABASE_PASSWORD,
     {
         dialect: "postgres",
-        host: process.env.DEV_DATABASE_URL
+        host: process.env.DEV_DATABASE_URL,
+        dialectOptions: {
+            ssl: true,
+            native: true
+        }
     }
 );
 

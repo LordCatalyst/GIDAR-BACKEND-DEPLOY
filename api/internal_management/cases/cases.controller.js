@@ -9,6 +9,7 @@ class CasesController {
             const data = await casesService.getCases();
             return res.json(data);
         } catch (error) {
+            console.log(error);
             ErrorHandler.handleHttp(req, error);
         }
     }
