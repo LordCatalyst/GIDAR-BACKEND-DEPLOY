@@ -13,11 +13,11 @@ class UsersService {
         return data;
     }
 
-    async getUserById(id) {
+    async getUser(username) {
         let data = await UsersModel.findAll({
             nest: true,
             raw: true,
-            where: { id_usuario: id }
+            where: { id_usuario: username.toUpperCase() }
         });
 
         if (!data) {

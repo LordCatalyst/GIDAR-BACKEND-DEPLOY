@@ -1,6 +1,11 @@
 const { DataTypes, Model } = require("sequelize");
 const { sequelize } = require("../../../config/sequelize.config");
 const { SystemMessage } = require("../../../utils/systemMessage");
+const { UsersModel } = require("../users/users.model");
+const { DependenciesModel } = require("../dependencies/dependencies.model");
+const { CaseTypeModel } = require("../case_type/caseType.model");
+const { ResponsibleModel } = require("../responsible/responsible.model");
+const { StatesModel } = require("../states/states.model");
 
 class CasesModel extends Model {}
 
@@ -82,4 +87,38 @@ CasesModel.init(
     }
 );
 
+CasesModel.hasOne(DependenciesModel, {
+    foreignKey: "id_dependencia",
+    sourceKey: "id_dependencia",
+    onDelete: "NO ACTION",
+    onUpdate: "NO ACTION"
+});
+
+CasesModel.hasOne(UsersModel, {
+    foreignKey: "id_usuario",
+    sourceKey: "id_usuario",
+    onDelete: "NO ACTION",
+    onUpdate: "NO ACTION"
+});
+
+CasesModel.hasOne(CaseTypeModel, {
+    foreignKey: "id_tipo_caso",
+    sourceKey: "id_tipo_caso",
+    onDelete: "NO ACTION",
+    onUpdate: "NO ACTION"
+});
+
+CasesModel.hasOne(ResponsibleModel, {
+    foreignKey: "id_responsable",
+    sourceKey: "id_responsable",
+    onDelete: "NO ACTION",
+    onUpdate: "NO ACTION"
+});
+
+CasesModel.hasOne(StatesModel,{
+    foreignKey: "id_estado",
+    sourceKey: "id_estado",
+    onDelete: "NO ACTION",
+    onUpdate: "NO ACTION"
+});
 module.exports = { CasesModel };

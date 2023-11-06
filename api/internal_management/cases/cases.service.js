@@ -4,7 +4,7 @@ const { CasesModel } = require("./cases.model");
 
 class CasesService {
     async getCases() {
-        let data = await CasesModel.findAll({ nest: true, raw: true });
+        let data = await CasesModel.findAll({ nest: true, raw: true, include: { all: true, nested: true } });
 
         if (!data) {
             data = {};
@@ -17,7 +17,8 @@ class CasesService {
         let data = await CasesModel.findAll({
             nest: true,
             raw: true,
-            where: { id_caso: id }
+            where: { id_caso: id },
+            include: { all: true, nested: true }
         });
 
         if (!data) {
@@ -31,7 +32,8 @@ class CasesService {
         let data = await CasesModel.findAll({
             nest: true,
             raw: true,
-            where: { id_responsable: responsible }
+            where: { id_responsable: responsible },
+            include: { all: true, nested: true }
         });
 
         if (!data) {
@@ -45,7 +47,8 @@ class CasesService {
         let data = await CasesModel.findAll({
             nest: true,
             raw: true,
-            where: { id_responsable: responsible, id_estado: status }
+            where: { id_responsable: responsible, id_estado: status },
+            include: { all: true, nested: true }
         });
 
         if (!data) {
@@ -59,7 +62,8 @@ class CasesService {
         let data = await CasesModel.findAll({
             nest: true,
             raw: true,
-            where: { id_estado: state }
+            where: { id_estado: state },
+            include: { all: true, nested: true }
         });
 
         if (!data) {

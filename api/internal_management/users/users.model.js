@@ -1,6 +1,8 @@
 const { DataTypes, Model } = require("sequelize");
 const { sequelize } = require("../../../config/sequelize.config");
 const { SystemMessage } = require("../../../utils/systemMessage");
+const { DependenciesModel } = require("../dependencies/dependencies.model");
+const { RolesModel } = require("../roles/roles.model");
 
 class UsersModel extends Model {}
 
@@ -75,5 +77,19 @@ UsersModel.init(
         deletedAt: false
     }
 );
+
+UsersModel.hasOne(DependenciesModel,{
+    foreignKey: "id_dependencia",
+    sourceKey: "id_dependencia",
+    onDelete: "NO ACTION",
+    onUpdate: "NO ACTION"
+});
+
+UsersModel.hasOne(RolesModel,{
+    foreignKey: "id_rol",
+    sourceKey: "id_rol",
+    onDelete: "NO ACTION",
+    onUpdate: "NO ACTION"
+});
 
 module.exports = { UsersModel };

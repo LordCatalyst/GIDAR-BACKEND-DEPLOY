@@ -12,10 +12,10 @@ class UsersController {
         }
     }
 
-    async getUserById(req, res) {
+    async getUser(req, res) {
         try {
-            const { id } = req.params;
-            const data = await usersService.getUserById(id);
+            const { username } = req.params;
+            const data = await usersService.getUser(username);
             return res.json(data);
         } catch (error) {
             ErrorHandler.handleHttp(res, error);

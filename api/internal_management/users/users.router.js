@@ -4,7 +4,7 @@ const usersRouter = new Router();
 const usersController = new UsersController();
 
 usersRouter.get("/gestion_interna/usuarios/all", usersController.getUsers);
-usersRouter.get("/gestion_interna/usuarios/:id", usersController.getUserById);
+usersRouter.get("/gestion_interna/usuarios/:id", usersController.getUser);
 usersRouter.post("/gestion_interna/usuarios/add", usersController.addUser);
 
 module.exports = usersRouter;
