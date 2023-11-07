@@ -17,7 +17,8 @@ class UsersService {
         let data = await UsersModel.findAll({
             nest: true,
             raw: true,
-            where: { id_usuario: username.toUpperCase() }
+            where: { nombre_usuario: username.toUpperCase() },
+            include: { all: true, nested: true }
         });
 
         if (!data) {
