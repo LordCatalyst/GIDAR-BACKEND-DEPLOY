@@ -25,8 +25,8 @@ io.on("connection", (socket) => {
     });
 });
 
-httpServer.listen(3001, () => {
-    console.log("Listening socket on port: 3001");
+httpServer.listen(3000, () => {
+    console.log("Listening socket on port: 3000");
 });
 
 app.use(cookieParser());
@@ -42,6 +42,6 @@ app.use((err, req, res, _next) => {
 const rootPath = path.join(__dirname, "api");
 RouterController.setRoutes(app, rootPath);
 
-app.listen(process.env.DEV_SERVER_PORT, () => {
+/* App.listen(process.env.DEV_SERVER_PORT, () => {
     console.log(`Port listening on: ${process.env.DEV_SERVER_PORT}`);
-});
+}); */
