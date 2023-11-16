@@ -25,7 +25,9 @@ io.on("connection", (socket) => {
     });
 });
 
-httpServer.listen(3001);
+httpServer.listen(3001, () => {
+    console.log("Listening socket on port: 3001");
+});
 
 app.use(cookieParser());
 app.use(express.json());
