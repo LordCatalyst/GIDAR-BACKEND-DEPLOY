@@ -1,6 +1,7 @@
 const { DataTypes, Model } = require("sequelize");
 const { sequelize } = require("../../../config/sequelize.config");
 const { SystemMessage } = require("../../../utils/systemMessage");
+const { UsersModel } = require("../users/users.model");
 
 class ResponsibleModel extends Model {}
 
@@ -33,5 +34,13 @@ ResponsibleModel.init(
         deletedAt: false
     }
 );
+
+ResponsibleModel.hasOne(UsersModel,
+    {
+        foreignKey: "id_usuario",
+        sourceKey: "id_usuario",
+        onDelete: "NO ACTION",
+        onUpdate: "NO ACTION"
+    });
 
 module.exports = { ResponsibleModel };

@@ -4,7 +4,11 @@ const { ResponsibleModel } = require("./responsible.model");
 
 class ResponsibleService {
     async getResponsibles() {
-        let data = await ResponsibleModel.findAll({ nest: true, raw: true });
+        let data = await ResponsibleModel.findAll({
+            nest: true,
+            raw: true,
+            include: { all: true, nested: true }
+        });
 
         if (!data) {
             data = {};
@@ -17,7 +21,8 @@ class ResponsibleService {
         let data = await ResponsibleModel.findAll({
             nest: true,
             raw: true,
-            where: { id_responsable: id }
+            where: { id_responsable: id },
+            include: { all: true, nested: true }
         });
 
         if (!data) {

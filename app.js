@@ -11,6 +11,22 @@ require("dotenv").config({ path: configPath });
 
 const app = express();
 
+const { createServer } = require("http");
+const { Server } = require("socket.io");
+
+const httpServer = createServer(app);
+const io = new Server(httpServer, {
+    /* Options */
+});
+
+io.on("connection", (socket) => {
+    socket.on("connection", (data) => {
+        console.log("Probando", data);
+    });
+});
+
+httpServer.listen(3001);
+
 app.use(cookieParser());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
