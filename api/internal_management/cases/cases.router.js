@@ -11,8 +11,16 @@ casesRouter.get(
     casesController.getCaseByResponsible
 );
 casesRouter.get(
+    "/gestion_interna/casos/dependencia/:dependency",
+    casesController.getCaseByDependency
+);
+casesRouter.get(
+    "/gestion_interna/casos/dependencia/:dependency/:status",
+    casesController.getCaseByDependencyAndStatus
+);
+casesRouter.get(
     "/gestion_interna/casos/responsable/:responsible/:status",
-    casesController.getCaseByResponsibleAndStatus
+    casesController.getCaseByDependencyAndStatus
 );
 casesRouter.get(
     "/gestion_interna/casos/estado/:status",

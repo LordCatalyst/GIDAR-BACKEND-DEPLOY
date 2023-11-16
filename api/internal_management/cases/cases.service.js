@@ -4,7 +4,11 @@ const { CasesModel } = require("./cases.model");
 
 class CasesService {
     async getCases() {
-        let data = await CasesModel.findAll({ nest: true, raw: true, include: { all: true, nested: true } });
+        let data = await CasesModel.findAll({
+            nest: true,
+            raw: true,
+            include: { all: true, nested: true }
+        });
 
         if (!data) {
             data = {};
@@ -33,6 +37,36 @@ class CasesService {
             nest: true,
             raw: true,
             where: { id_responsable: responsible },
+            include: { all: true, nested: true }
+        });
+
+        if (!data) {
+            data = {};
+        }
+
+        return data;
+    }
+
+    async getCasesByDependency(dependencyId) {
+        let data = await CasesModel.findAll({
+            nest: true,
+            raw: true,
+            where: { id_dependencia: dependencyId },
+            include: { all: true, nested: true }
+        });
+
+        if (!data) {
+            data = {};
+        }
+
+        return data;
+    }
+
+    async getCasesByDependencyAndStatus(dependencyId, status) {
+        let data = await CasesModel.findAll({
+            nest: true,
+            raw: true,
+            where: { id_dependencia: dependencyId, id_estado: status },
             include: { all: true, nested: true }
         });
 

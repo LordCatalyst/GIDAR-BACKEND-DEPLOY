@@ -44,6 +44,29 @@ class CasesController {
         }
     }
 
+    async getCaseByDependency(req, res) {
+        try {
+            const { dependency } = req.params;
+            const data = await casesService.getCasesByDependency(dependency);
+            return res.json(data);
+        } catch (error) {
+            ErrorHandler.handleHttp(res, error);
+        }
+    }
+
+    async getCaseByDependencyAndStatus(req, res) {
+        try {
+            const { dependency, status } = req.params;
+            const data = await casesService.getCasesByDependencyAndStatus(
+                dependency,
+                status
+            );
+            return res.json(data);
+        } catch (error) {
+            ErrorHandler.handleHttp(res, error);
+        }
+    }
+
     async getCaseByResponsibleAndStatus(req, res) {
         try {
             const { responsible, status } = req.params;

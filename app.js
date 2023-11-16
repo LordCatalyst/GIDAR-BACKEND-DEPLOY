@@ -20,8 +20,8 @@ const io = new Server(httpServer, {
 });
 
 io.on("connection", (socket) => {
-    socket.on("connection", (data) => {
-        console.log("Probando", data);
+    socket.on("connection", () => {
+        console.log("SENT FROM SOCKET: ", socket.id);
     });
 });
 
